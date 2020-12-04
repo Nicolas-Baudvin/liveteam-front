@@ -1,0 +1,11 @@
+.App {
+    min-height: 100vh;
+    max-width: 100%;
+    background-color: rgba(26, 0, 97, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url("./img/Font.png");
+    background-position: center;
+    overflow: hidden;
+}

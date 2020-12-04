@@ -2,11 +2,23 @@ import { shallow } from 'enzyme';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import App from '.';
 import Home from '../Home';
+import Header from '../Header';
+import Footer from '../Footer';
 
 describe("App", () => {
     it("App renders correctly", () => {
         const appWrapper = shallow(<App />);
         expect(appWrapper.find(".App").length).toEqual(1);
+    });
+
+    it("renders Header Component", () => {
+        const homeWrapper = shallow(<App />);
+        expect(homeWrapper.find(Header).length).toEqual(1);
+    });
+
+    it("renders Footer Component", () => {
+        const homeWrapper = shallow(<App />);
+        expect(homeWrapper.find(Footer).length).toEqual(1);
     });
 
     it("renders Home Component", () => {
