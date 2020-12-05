@@ -4,6 +4,14 @@ import Logo from './Logo';
 import Nav from './Nav';
 import { navItemsArray } from './utils';
 
+const mockHistoryPush = jest.fn();
+jest.mock("react-router-dom", () => ({
+    ...jest.requireActual("react-router-dom"),
+    useHistory: () => ({
+        push: mockHistoryPush,
+    }),
+}));
+
 describe("Header Component and Childrens", () => {
     const headerWrapper = shallow(<Header />);
     it("header renders correctly", () => {
@@ -24,11 +32,10 @@ describe("Header Component and Childrens", () => {
     });
 
     it("should call onClick func", () => {
-        const funcToCall = jest.fn();
-        const logoWrapper = shallow(<Logo onClick={funcToCall} />);
+        const logoWrapper = shallow(<Logo />);
         logoWrapper.simulate("click");
 
-        expect(funcToCall).toHaveBeenCalled();
+        expect(mockHistoryPush).toHaveBeenCalledWith("/");
     });
 
     /**
@@ -71,7 +78,7 @@ describe("Header Component and Childrens", () => {
         const navItems = navWrapper.find(".header-nav__item");
         navItems.forEach((item, i) => {
             item.simulate("click");
-            expect(funcToCall).toHaveBeenCalled();
+            expect(mockHistoryPush).toHaveBeenCalledWith(navItemsArray[i].path);
         });
     });
 });
