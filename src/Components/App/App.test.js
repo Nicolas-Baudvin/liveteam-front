@@ -4,10 +4,11 @@ import App from '.';
 import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
+import Signup from '../SignUp';
 
 describe("App", () => {
+    const appWrapper = shallow(<App />);
     it("App renders correctly", () => {
-        const appWrapper = shallow(<App />);
         expect(appWrapper.find(".App").length).toEqual(1);
     });
 
@@ -22,29 +23,41 @@ describe("App", () => {
     });
 
     it("renders Home Component", () => {
-        const appWrapper = shallow(<App />);
         expect(appWrapper.contains(<Home />)).toEqual(true);
     });
 
+    it("should render the Signup Component", () => {
+        expect(appWrapper.find(Signup).length).toEqual(1)
+    });
+
     it("renders Router Component", () => {
-        const appWrapper = shallow(<App />);
         expect(appWrapper.find(BrowserRouter).length).toEqual(1);
     });
 
     it("renders Switch Component", () => {
-        const appWrapper = shallow(<App />);
         expect(appWrapper.find(Switch).length).toEqual(1);
     });
 
     it("renders Route Component", () => {
-        const appWrapper = shallow(<App />);
-        expect(appWrapper.find(Route).length).toEqual(1)
+        expect(appWrapper.find(Route).length).toEqual(2)
     });
 
-    it("Route props are exact && path='/'", () => {
-        const appWrapper = shallow(<App />);
-        const route = appWrapper.find(Route);   
-        expect(route.props().exact).toEqual(true);
-        expect(route.props().path).toEqual("/");
+    it("Route props have good path & exact props", () => {
+        const routesProps = [
+            {
+                exact: true,
+                path: "/"
+            },
+            {
+                exact: true,
+                path: "/inscription"
+            }
+        ];
+
+        const routes = appWrapper.find(Route);  
+        routes.forEach((route, i) => {
+            expect(route.props().exact).toEqual(routesProps[i].exact);
+            expect(route.props().path).toEqual(routesProps[i].path);
+        })
     });
 });
