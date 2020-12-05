@@ -1,11 +1,15 @@
 .App {
-    min-height: 100vh;
+    height: 100vh;
     max-width: 100%;
-    background-color: rgba(26, 0, 97, 0.8);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+body {
+    min-height: 100vh;
     background-image: url("./img/Font.png");
     background-position: center;
-    overflow: hidden;
+    background-size: contain;
+    background-color: rgba(26, 0, 97, 0.8);
 }
