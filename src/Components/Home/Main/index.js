@@ -3,9 +3,11 @@ import { Button } from '../../StyledComponents';
 
 const Main = () => {
     const history = useHistory();
+
     const handleClick = () => {
         history.push("/inscription");
-    }
+    };
+
     return <div className="home-main">
         <div className="home-main__text">
             <h1>
