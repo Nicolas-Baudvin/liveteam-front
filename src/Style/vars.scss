@@ -1,0 +1,14 @@
+$violet: rgb(108, 99, 255);
+$red: rgb(236, 11, 67);
+$green: rgb(35, 188, 149);
+
+@mixin flex-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@mixin flex-space-around {
+    display: flex;
+    justify-content: space-around;
+}
