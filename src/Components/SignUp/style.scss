@@ -1,0 +1,28 @@
+@import '../../Style/vars.scss';
+
+.signup {
+    @include flex-space-around;
+}
+
+.form {
+    @include flex-center;
+    background-color: white;
+    padding: 2em 5em;
+    border-radius: 15px;
+    width: 400px;
+
+    h1 {
+        color: $violet;
+        text-transform: uppercase;
+    }
+
+    form {
+        @include flex-center;
+    }
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
