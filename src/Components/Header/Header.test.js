@@ -28,7 +28,7 @@ describe("Header Component and Childrens", () => {
     it("Logo has an <img> tag with appropriate src and alt props", () => {
         const logoWrapper = shallow(<Logo />);
         expect(logoWrapper.children().props().src).toEqual("/img/logo.png");
-        expect(logoWrapper.children().props().alt).toEqual("Logo");
+        expect(logoWrapper.children().props().alt).toEqual("LiveTeam");
     });
 
     it("should call onClick func", () => {

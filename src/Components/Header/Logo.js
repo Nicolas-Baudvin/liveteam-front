@@ -6,7 +6,7 @@ const Logo = () => {
         history.push("/");
     }
     return <div onClick={(e) => handleClick(e)} className="header-logo">
-        <img src={`${process.env.PUBLIC_URL}/img/logo.png`} alt="Logo" width={140} height={90} />
+        <img src={`${process.env.PUBLIC_URL}/img/logo.png`} alt="LiveTeam" width={140} height={90} />
     </div>
 };
 
