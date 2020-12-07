@@ -82,3 +82,10 @@ export const Icon = styled.img`
 export const Tooltip = styled.abbr`
     font-weight: bold;
 `;
+
+export const ErrorInputText = styled.p`
+    color: red;
+    margin: 0;
+    height: 21px;
+    font-size: .9rem;
+`;
