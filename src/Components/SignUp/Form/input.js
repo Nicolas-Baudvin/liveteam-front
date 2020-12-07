@@ -1,7 +1,7 @@
-import { FormField, Icon, Input, Label, Tooltip } from "../../StyledComponents";
+import { FormField, Icon, Input, Label, Tooltip, ErrorInputText } from "../../StyledComponents";
 import PropTypes from 'prop-types';
 
-const Email = ({ type, label, tooltip, icon = true, onChange, value, code, i }) => {
+const Email = ({ type, label, tooltip, icon = true, onChange, value, code, i, error }) => {
     return <FormField key={i}>
         <Label>{label}</Label>
         <div className="row">
@@ -12,6 +12,11 @@ const Email = ({ type, label, tooltip, icon = true, onChange, value, code, i }) 
                 </Tooltip>
             }
         </div>
+        {
+            <ErrorInputText>
+                {error}
+            </ErrorInputText>
+        }
     </FormField>
 };
 

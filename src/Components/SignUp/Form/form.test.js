@@ -2,6 +2,7 @@ import { shallow } from 'enzyme';
 import Form from '.';
 import Input from './input';
 import React from 'react';
+import { isEmailCorrect }  from './utils';
 
 const mockHistoryPush = jest.fn();
 jest.mock("react-router-dom", () => ({
@@ -31,14 +32,14 @@ describe("Form", () => {
         expect(formWrapper.find(Input).length).toEqual(4);
     });
 
-    it("should call useState 4 times", () => {
+    it("should call useState few 8 times", () => {
         jest.spyOn(React, "useState").mockImplementation(useStateMock);
         const formWrapper = shallow(<Form />);
         const inputs = formWrapper.find(Input);
         inputs.forEach(input => {
-            input.simulate("change", { target: { value: "test" } });
+            input.simulate("change", { target: { value: "test@test.test" } });
         });
-        expect(setState).toHaveBeenCalledTimes(4);
+        expect(setState).toHaveBeenCalledTimes(8);
     });
 
     it("should redirect to connection page", () => {
@@ -49,5 +50,17 @@ describe("Form", () => {
         button.simulate("click");
 
         expect(mockHistoryPush).toHaveBeenCalledWith("/connexion");
+    });
+
+    /**
+     * Utils
+     */
+
+    it("should return false email", () => {
+        expect(isEmailCorrect("string")).toEqual(false);
+    });
+
+    it("should return true email", () => {
+        expect(isEmailCorrect("test@test.test")).toEqual(true);
     })
 });
