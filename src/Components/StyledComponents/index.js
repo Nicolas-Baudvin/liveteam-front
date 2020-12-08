@@ -20,7 +20,7 @@ export const Button = styled.button`
     text-transform: uppercase;
     font-weight: ${props => props.bold && "bold"};
     letter-spacing: ${props => props.spacing === "true" && ".08em"};
-    margin: ${props => !props.text && "1em 0"};
+    margin: ${props => !props.text ? "1em 0" : ".5em 0"};
 
     &:hover {
         box-shadow: ${props => !props.text && "0 3px 9px rgba(0,0,0,.32)"};
