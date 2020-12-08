@@ -20,7 +20,6 @@ describe("Form", () => {
         confPass: jest.fn()
     };
 
-    ;
     const mockInitState = {
         username: "",
         password: "",

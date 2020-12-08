@@ -12,11 +12,9 @@ const Email = ({ type, label, tooltip, icon = true, onChange, value, i, error })
                 </Tooltip>
             }
         </div>
-        {
-            <ErrorInputText>
-                {error}
-            </ErrorInputText>
-        }
+        <ErrorInputText>
+            {error}
+        </ErrorInputText>
     </FormField>
 };
 
