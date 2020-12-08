@@ -8,11 +8,15 @@ const Form = ({ errors, state, handleSubmit, type, onChangeHandlers }) => {
     const history = useHistory();
 
     const handleClick = () => {
-        history.push("/connexion");
+        return type === "signup" ? history.push("/connexion") : history.push("/inscription");
+    };
+
+    const handleClickForgotenPassword = () => {
+        // TODO: fetch
     };
 
     return <>
-        <h1 className="form-title"> S'inscrire </h1>
+        <h1 className="form-title"> {type === "signup" ? "S'inscrire" : "Connexion"} </h1>
         <form onSubmit={handleSubmit} action="">
             {
                 type === "signup" && signupInputsArray.map((input, i) =>
@@ -51,6 +55,11 @@ const Form = ({ errors, state, handleSubmit, type, onChangeHandlers }) => {
                 type === "signup" ? "Déjà inscrit ?" : "Pas encore inscrit ?"
             }
         </Button>
+        {
+            type === "login" && <Button onClick={handleClickForgotenPassword} className="form-forgotPass" text>
+                Mot de passe oublié ?
+            </Button>
+        }
     </>
 };
 
@@ -60,12 +69,9 @@ Form.propTypes = {
      */
     errors: PropTypes.shape({
         username: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
+        email: PropTypes.string,
         password: PropTypes.string.isRequired,
-        confPass: PropTypes.string.isRequired
-    }) || PropTypes.shape({
-        username: PropTypes.string.isRequired,
-        password: PropTypes.string.isRequired
+        confPass: PropTypes.string
     }),
 
     /**
@@ -73,12 +79,9 @@ Form.propTypes = {
      */
     state: PropTypes.shape({
         username: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
+        email: PropTypes.string,
         password: PropTypes.string.isRequired,
-        confPass: PropTypes.string.isRequired
-    }) || PropTypes.shape({
-        username: PropTypes.string.isRequired,
-        password: PropTypes.string.isRequired
+        confPass: PropTypes.string
     }),
     handleSubmit: PropTypes.func.isRequired,
     type: PropTypes.oneOf(["login", "signup"]).isRequired
