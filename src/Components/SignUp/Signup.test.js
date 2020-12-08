@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 import Signup from '.';
 import Form from '../Form';
 import { Input } from '../StyledComponents';
-import { isEmailCorrect } from './utils';
+import { checkEmail } from '../../Utils';
 
 describe("<Signup />", () => {
     const setState = jest.fn();
@@ -52,10 +52,10 @@ describe("<Signup />", () => {
      */
 
     it("should return false email", () => {
-        expect(isEmailCorrect("string")).toEqual(false);
+        expect(checkEmail("string")).toEqual(false);
     });
 
     it("should return true email", () => {
-        expect(isEmailCorrect("test@test.test")).toEqual(true);
+        expect(checkEmail("test@test.test")).toEqual(true);
     })
 });
