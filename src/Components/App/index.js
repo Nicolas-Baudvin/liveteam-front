@@ -4,6 +4,7 @@ import Footer from '../Footer';
 import Signup from '../SignUp';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
+import Login from '../Login';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
           </Route>
           <Route exact path="/inscription">
             <Signup />
+          </Route>
+          <Route exact path="/connexion"> 
+            <Login />
           </Route>
         </Switch>
         <Footer />

@@ -5,6 +5,7 @@ import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
 import Signup from '../SignUp';
+import Login from '../Login';
 
 describe("App", () => {
     const appWrapper = shallow(<App />);
@@ -30,6 +31,10 @@ describe("App", () => {
         expect(appWrapper.find(Signup).length).toEqual(1)
     });
 
+    it("shoudl render the Login component", () => {
+        expect(appWrapper.find(Login).length).toEqual(1);
+    });
+
     it("renders Router Component", () => {
         expect(appWrapper.find(BrowserRouter).length).toEqual(1);
     });
@@ -39,7 +44,7 @@ describe("App", () => {
     });
 
     it("renders Route Component", () => {
-        expect(appWrapper.find(Route).length).toEqual(2)
+        expect(appWrapper.find(Route).length).toEqual(3)
     });
 
     it("Route props have good path & exact props", () => {
@@ -51,6 +56,10 @@ describe("App", () => {
             {
                 exact: true,
                 path: "/inscription"
+            },
+            {
+                exact: true,
+                path: "/connexion"
             }
         ];
 
