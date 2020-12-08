@@ -18,7 +18,7 @@ function App() {
           <Route exact path="/inscription">
             <Signup />
           </Route>
-          <Route exact path="/connexion"> 
+          <Route exact path="/connexion">
             <Login />
           </Route>
         </Switch>
