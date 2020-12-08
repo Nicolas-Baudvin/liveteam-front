@@ -2,7 +2,7 @@ import Input from './input';
 import { useState } from 'react';
 import { Button } from '../../StyledComponents';
 import { useHistory } from 'react-router-dom';
-import { isEmailCorrect } from './utils';
+import { isEmailCorrect, checkFields, inputsArray } from './utils';
 
 const initialstate = {
     username: "",
@@ -18,19 +18,12 @@ const initialErrors = {
     confPass: "",
 };
 
-const inputsArray = [
-    { type: "email", label: "Email", tooltip: "L'email doit être valide et contenir 100 caractères maximum", code: "email" },
-    { type: "text", label: "Pseudonyme", tooltip: "Le pseudonyme doit contenir entre 6 et 20 caractères", code: "username" },
-    { type: "password", label: "Mot de passe", tooltip: "Le mot de passe doit faire entre 8 et 30 caractères", code: "password" },
-    { type: "password", label: "Confirmation mot de passe", tooltip: "Mot de passe identique au champs mot de passe du dessus", code: "confPass" }
-];
-
 const Form = () => {
     const history = useHistory();
     const [state, setState] = useState(initialstate);
     const [errors, setErrors] = useState(initialErrors);
 
-    const handlerFuncs = {
+    const onChangeHandlers = {
         email: (e) => {
             if (e.target.value.length >= 100)
             {
@@ -108,9 +101,42 @@ const Form = () => {
         history.push("/connexion");
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const isUsernameCorrect = checkFields(state.username).username();
+        const isPasswordCorrect = checkFields(state.password).password();
+
+        if (isUsernameCorrect)
+        {
+            setErrors({
+                ...errors,
+                username: "Le pseudo contient des caractères prohibés. Les seuls caractères autorisés sont les caractères alphanumériques."
+            });
+        }
+        if (isPasswordCorrect)
+        {
+            setErrors({
+                ...errors,
+                password: "Le mot de passe est invalide. Il doit contenir 8 caractères minimum, 1 lettre majuscule, une lettre minuscule, et un chiffre."
+            });
+        }
+
+        if (
+            isPasswordCorrect
+            && isUsernameCorrect
+            && !errors.confPass
+            && !errors.email
+            && !errors.password
+            && !errors.username
+        )
+        {
+            // Fetch
+        }
+    };
+
     return <>
         <h1 className="form-title"> S'inscrire </h1>
-        <form action="">
+        <form onSubmit={handleSubmit} action="">
             {
                 inputsArray.map((input, i) =>
                     (<Input
@@ -118,14 +144,13 @@ const Form = () => {
                         i={i}
                         type={input.type}
                         value={state[input.code]}
-                        onChange={handlerFuncs[input.code]}
+                        onChange={onChangeHandlers[input.code]}
                         label={input.label}
                         tooltip={input.tooltip}
-                        code={input.code}
                         error={errors[input.code]}
                     />))
             }
-            <Button type="submit" spacin="true" bold color="green">
+            <Button type="submit" spacing="true" bold color="green">
                 inscription
             </Button>
         </form>
