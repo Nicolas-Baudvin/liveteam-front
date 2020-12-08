@@ -2,6 +2,7 @@
 
 .signup {
     @include flex-space-around;
+    align-items: center;
 }
 
 .form {

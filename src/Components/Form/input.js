@@ -1,4 +1,4 @@
-import { FormField, Icon, Input, Label, Tooltip, ErrorInputText } from "../../StyledComponents";
+import { FormField, Icon, Input, Label, Tooltip, ErrorInputText } from "../StyledComponents";
 import PropTypes from 'prop-types';
 
 const Email = ({ type, label, tooltip, icon = true, onChange, value, i, error }) => {
