@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Form from '../Form';
-import { checkFields, isEmailCorrect } from './utils';
+import { checkFields } from './utils';
+import { checkEmail } from '../../Utils';
 import './style.scss';
 
 const initialstate = {
@@ -27,7 +28,7 @@ const Signup = () => {
             {
                 return;
             }
-            else if (!isEmailCorrect(e.target.value))
+            else if (!checkEmail(e.target.value))
             {
                 setErrors({
                     ...errors,
@@ -95,19 +96,19 @@ const Signup = () => {
         },
     };
 
-    const handleSubmit = (e) => (state, errors) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const isUsernameCorrect = checkFields(state.username).username();
         const isPasswordCorrect = checkFields(state.password).password();
 
-        if (isUsernameCorrect)
+        if (!isUsernameCorrect)
         {
             setErrors({
                 ...errors,
                 username: "Le pseudo contient des caractères prohibés. Les seuls caractères autorisés sont les caractères alphanumériques."
             });
         }
-        if (isPasswordCorrect)
+        if (!isPasswordCorrect)
         {
             setErrors({
                 ...errors,
