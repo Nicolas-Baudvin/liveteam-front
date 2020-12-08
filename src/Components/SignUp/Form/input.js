@@ -27,7 +27,8 @@ Email.propTypes = {
     icon: PropTypes.bool,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
-    error: PropTypes.string.isRequired
+    error: PropTypes.string.isRequired,
+    i: PropTypes.number.isRequired
 };
 
 export default Email;
