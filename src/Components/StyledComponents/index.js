@@ -40,7 +40,7 @@ export const Button = styled.button`
 `;
 
 export const Input = styled.input`
-    border: 1px solid rgba(0,0,0,.4);
+    border: ${props => props.error ? "1px solid #ff0000" : "1px solid rgba(0,0,0,.4)"};
     font-size: 1.5em;
     padding: .6em;
     border-radius: 8px;
@@ -48,12 +48,12 @@ export const Input = styled.input`
     color: rgb(50,50,50);
 
     &:hover {
-        box-shadow: 0 0 0 2px rgb(108, 99, 255);
+        box-shadow: ${props => props.error ? "0 0 0 2px #ff0000" : "0 0 0 2px rgb(108, 99, 255)"};
     }
 
     &:focus {
         outline: none;
-        box-shadow: 0 0 0 2px rgb(108, 99, 255);
+        box-shadow: ${props => props.error ? "0 0 0 2px #ff0000" : "0 0 0 2px rgb(108, 99, 255)"};
     }
 `;
 
