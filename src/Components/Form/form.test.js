@@ -2,7 +2,6 @@ import { shallow } from 'enzyme';
 import Form from '.';
 import Input from './input';
 import React from 'react';
-import { isEmailCorrect } from './utils';
 
 const mockHistoryPush = jest.fn();
 jest.mock("react-router-dom", () => ({
