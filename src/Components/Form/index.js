@@ -41,11 +41,15 @@ const Form = ({ errors, state, handleSubmit, type, onChangeHandlers }) => {
                     />))
             }
             <Button type="submit" spacing="true" bold color="green">
-                inscription
+                {
+                    type === "signup" ? "inscription" : "Connexion"
+                }
             </Button>
         </form>
         <Button className="form-changeView" onClick={handleClick} text>
-            Déjà inscrit ?
+            {
+                type === "signup" ? "Déjà inscrit ?" : "Pas encore inscrit ?"
+            }
         </Button>
     </>
 };
@@ -59,7 +63,7 @@ Form.propTypes = {
         email: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired,
         confPass: PropTypes.string.isRequired
-    }) || PropTypes.shap({
+    }) || PropTypes.shape({
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired
     }),
@@ -72,7 +76,7 @@ Form.propTypes = {
         email: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired,
         confPass: PropTypes.string.isRequired
-    }) || PropTypes.shap({
+    }) || PropTypes.shape({
         username: PropTypes.string.isRequired,
         password: PropTypes.string.isRequired
     }),
