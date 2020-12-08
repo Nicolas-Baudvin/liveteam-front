@@ -1,6 +1,6 @@
 @import '../../Style/vars.scss';
 
-.signup {
+.signup, .login {
     @include flex-space-around;
     align-items: center;
 }
