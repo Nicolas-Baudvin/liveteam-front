@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Header from '.'
 import Logo from './Logo';
 import Nav from './Nav';
@@ -9,6 +9,7 @@ jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
     useHistory: () => ({
         push: mockHistoryPush,
+        location: { pathname: "/" }
     }),
 }));
 
@@ -27,13 +28,15 @@ describe("Header Component and Childrens", () => {
 
     it("Logo has an <img> tag with appropriate src and alt props", () => {
         const logoWrapper = shallow(<Logo />);
-        expect(logoWrapper.children().props().src).toEqual("/img/logo.png");
-        expect(logoWrapper.children().props().alt).toEqual("LiveTeam");
+        expect(logoWrapper.find("img").props().src).toEqual("/img/logo.png");
+        expect(logoWrapper.find("img").props().alt).toEqual("LiveTeam");
     });
 
     it("should call onClick func", () => {
-        const logoWrapper = shallow(<Logo />);
-        logoWrapper.simulate("click");
+        const headerWrapper = mount(<Header />);
+        const logo = headerWrapper.find(".header-logo");
+
+        logo.simulate("click");
 
         expect(mockHistoryPush).toHaveBeenCalledWith("/");
     });
@@ -73,12 +76,12 @@ describe("Header Component and Childrens", () => {
     });
 
     it("should call func on click on each nav item", () => {
-        const funcToCall = jest.fn();
-        const navWrapper = shallow(<Nav history={{ push: jest.fn(), location: "/" }} onClick={funcToCall} nav={navItemsArray} />);
+        const handleClick = jest.fn();
+        const navWrapper = shallow(<Nav nav={navItemsArray} handleClick={handleClick} />);
         const navItems = navWrapper.find(".header-nav__item");
         navItems.forEach((item, i) => {
             item.simulate("click");
-            expect(mockHistoryPush).toHaveBeenCalledWith(navItemsArray[i].path);
+            expect(handleClick).toHaveBeenCalled();
         });
     });
 });
