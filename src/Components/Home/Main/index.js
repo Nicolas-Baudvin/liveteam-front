@@ -19,7 +19,7 @@ const Main = () => {
                 sécurisée qui vous permet de rester en contact permanent
                 avec votre équipe.
             </p>
-            <Button onClick={handleClick}>
+            <Button color="green" onClick={handleClick}>
                 Essayer Gratuitement
             </Button>
         </div>

@@ -24,7 +24,7 @@ export const Button = styled.button`
 
     &:hover {
         box-shadow: ${props => !props.text && "0 3px 9px rgba(0,0,0,.32)"};
-        transform: ${props => !props.text && "translate(0, -2px)"};
+        transform: ${props => !props.text && "translate(0, -1px)"};
         background-color: ${props => props.color && colors[props.color].hover};
         text-decoration: ${props => props.text && "underline"};
         color: ${props => props.text && "rgb(50,50,50)"}
@@ -33,7 +33,7 @@ export const Button = styled.button`
     &:focus {
         border: none;
         outline: none;
-        transform: ${props => !props.text && "translate(0, 2px)"};
+        transform: ${props => !props.text && "translate(0, 1px)"};
         box-shadow: ${props => !props.text && "0 2px 4px rgba(0,0,0,.40)"};
         background-color: ${props => props.color && colors[props.color].hover};
     }
