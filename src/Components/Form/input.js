@@ -1,7 +1,7 @@
 import { FormField, Icon, Input, Label, Tooltip, ErrorInputText } from "../StyledComponents";
 import PropTypes from 'prop-types';
 
-const Email = ({ type, label, tooltip, icon = true, onChange, value, i, error }) => {
+const InputField = ({ type, label, tooltip, icon = true, onChange, value, i, error }) => {
     return <FormField key={i}>
         <Label>{label}</Label>
         <div className="row">
@@ -18,7 +18,7 @@ const Email = ({ type, label, tooltip, icon = true, onChange, value, i, error })
     </FormField>
 };
 
-Email.propTypes = {
+InputField.propTypes = {
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     tooltip: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ Email.propTypes = {
     i: PropTypes.number.isRequired
 };
 
-export default Email;
+export default InputField;
