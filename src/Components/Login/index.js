@@ -9,6 +9,7 @@ const initialState = {
 const Login = () => {
     const [errors, setErrors] = useState(initialState);
     const [state, setState] = useState(initialState);
+    const [email, setEmail] = useState("");
 
     const handlersFuncs = {
         username: (e) => {
@@ -31,6 +32,10 @@ const Login = () => {
                 password: e.target.value
             });
         }
+    };
+
+    const handleChangeForgottenPass = (e) => {
+        setEmail(e.target.value);
     };
 
     const handleSubmit = (e) => {
@@ -63,6 +68,8 @@ const Login = () => {
                     handleSubmit={handleSubmit}
                     state={state}
                     errors={errors}
+                    handleChangeForgottenPass={handleChangeForgottenPass}
+                    value={email}
                 />
             </div>
         </div>
