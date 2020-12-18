@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import Form from '../Form';
 
 const initialState = {
@@ -10,6 +11,7 @@ const Login = () => {
     const [errors, setErrors] = useState(initialState);
     const [state, setState] = useState(initialState);
     const [email, setEmail] = useState("");
+    const dispatch = useDispatch();
 
     const handlersFuncs = {
         username: (e) => {
