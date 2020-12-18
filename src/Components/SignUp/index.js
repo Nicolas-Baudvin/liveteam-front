@@ -3,6 +3,8 @@ import Form from '../Form';
 import { checkFields } from './utils';
 import { checkEmail } from '../../Utils';
 import './style.scss';
+import { useDispatch } from 'react-redux';
+import { signup } from '../../Store/Registration/Actions';
 
 const initialstate = {
     username: "",
@@ -21,6 +23,8 @@ const initialErrors = {
 const Signup = () => {
     const [state, setState] = useState(initialstate);
     const [errors, setErrors] = useState(initialErrors);
+    const dispatch = useDispatch();
+
 
     const onChangeHandlers = {
         email: (e) => {
@@ -125,7 +129,7 @@ const Signup = () => {
             && !errors.username
         )
         {
-            // Fetch
+            dispatch(signup({ ...state }));
         }
     };
     return <div className="signup">
