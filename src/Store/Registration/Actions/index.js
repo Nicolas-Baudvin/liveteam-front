@@ -2,25 +2,25 @@ export const LOGOUT = "registration/LOGOUT";
 export const LOGIN = "registration/LOGIN";
 export const SIGNUP = "registration/SIGNUP";
 
-export const logOut = () => ({
+export const logout = () => ({
     type: LOGOUT
 });
 
 /**
  * @description Should contain password and username
- * @param {Object} payload { username: String, password: String }
+ * @param {Object} userCredentials { username: String, password: String }
  */
-export const login = (payload) => ({
+export const login = (userCredentials) => ({
     type: LOGIN,
-    ...payload
+    userCredentials
 });
 
 /**
  * @description Should contain password, username, email, confirmation password.
- * @param {Object} payload { username: String, password: String, Email: String, confPass: String }
+ * @param {Object} userCredentials { username: String, password: String, Email: String, confPass: String }
  */
-export const signup = (payload) => ({
+export const signup = (userCredentials) => ({
     type: SIGNUP,
-    ...payload
+    userCredentials
 });
 

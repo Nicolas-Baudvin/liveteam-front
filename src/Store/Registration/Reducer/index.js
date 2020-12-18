@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT, SIGNUP } from "../Actions";
+import { LOGIN } from "../Actions";
 
 const initialState = {
     token: ""
@@ -9,7 +9,8 @@ const RegistrationReducer = (state = initialState, action) => {
     {
         case LOGIN: {
             return {
-                ...action.payload
+                ...state,
+                token: action.token
             };
         }
         default: {

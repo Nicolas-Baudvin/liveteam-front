@@ -1,7 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 
-const middlewares = applyMiddleware();
+/**
+ * Middlewares
+ */
+import RegistrationMw from './Registration/Middleware';
+
+const middlewares = applyMiddleware(RegistrationMw);
 
 const withReduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
